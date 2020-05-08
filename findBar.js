@@ -51,7 +51,6 @@ function getToken(){
     filter = input.toUpperCase();
     if(input.length==0){
         getAlbums();
-        break;
     }
     if(input.length>1){        
         result = result.filter(item=>item.name.toUpperCase().indexOf(filter)!==-1)
