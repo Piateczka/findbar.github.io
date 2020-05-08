@@ -5,6 +5,9 @@ function getToken(){
     window.location.replace(`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}`);
 
   };
+  function handleResponse(){
+      return data
+  }
   function getAlbums(){
     $.ajax({
         url: 'https://api.spotify.com/v1/search?type=album&query=metalica',
@@ -13,9 +16,7 @@ function getToken(){
             'Authorization' : 'Bearer ' + localStorage.getItem('token')
         },
         async: false,
-        success: function(data) {
-            return data.albums.items;
-        }
+        success: handleResponse
     });
 };
 
@@ -27,7 +28,7 @@ function getToken(){
     if(token=="null" || token==undefined){
         getToken();
     }
-    var itemsList = getAlbums();
+    var itemsList = handleResponse();
     console.log(itemsList);
     city = [
         {
