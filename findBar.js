@@ -12,8 +12,9 @@ function getToken(){
         headers: {
             'Authorization' : 'Bearer ' + localStorage.getItem('token')
         },
+        async: false,
         success: function(data) {
-            return data;
+            return data.albums.items;
         }
     });
 };
@@ -26,9 +27,8 @@ function getToken(){
     if(token=="null" || token==undefined){
         getToken();
     }
-    var albums = getAlbums();
-    var items = albums.items;
-    console.log(items);
+    var itemsList = getAlbums();
+    console.log(itemsList);
     city = [
         {
 
