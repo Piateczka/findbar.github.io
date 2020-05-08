@@ -51,7 +51,7 @@ function getToken(){
     input = $("#myInput").val()
     filter = input.toUpperCase();
      if (pLenght === undefined) { pLenght = 0 }
-
+    
     if(pLenght<input.length){
         if(input.length>1){        
             result = result.filter(item=>item.name.toUpperCase().indexOf(filter)!==-1)
