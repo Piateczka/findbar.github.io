@@ -27,7 +27,7 @@ function getToken(){
     console.log(token);
     localStorage.setItem('token', token);
     token = localStorage.getItem('token');
-    if(token==null || token==undefined){
+    if(token=="null" || token==undefined){
         getToken();
     }
 
