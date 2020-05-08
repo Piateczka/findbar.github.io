@@ -6,7 +6,12 @@ function getToken(){
 
   };
   function handleResponse(data){
-    var itemsList =  data;
+    var itemsList =  data.albums.items;
+
+    var ul = $("#elements");
+    for(var i=0;i<itemsList.length;i++){
+        var elem = ul.append( "<li>"+itemsList[i].name+"</li>" );
+   }
   }
   function getAlbums(){
     $.ajax({
@@ -29,34 +34,7 @@ function getToken(){
         getToken();
     }
     getAlbums()
-    city = [
-        {
 
-            name: "Warszawa"
-        },
-        {
-            name: "Kraków"
-        },
-        {
-            name: "Poznań"
-        },
-        {
-            name: "Londyn"
-        },
-        {
-            name: "Warszawianice"
-        },
-        {
-            name: "Gdańsk"
-        },
-        {
-            name: "Gdynia"
-        }
-    ]
-    var ul = $("#elements");
-    for(var i=0;i<city.length;i++){
-        var elem = ul.append( "<li>"+city[i].name+"</li>" );
-   }
 
  
  })();
