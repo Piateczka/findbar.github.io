@@ -13,7 +13,7 @@ function getToken(){
             'Authorization' : 'Bearer ' + localStorage.getItem('token')
         },
         success: function(data) {
-            console.log(data);
+            return data;
         }
     });
 };
@@ -26,7 +26,9 @@ function getToken(){
     if(token=="null" || token==undefined){
         getToken();
     }
-    getAlbums();
+    var albums = getAlbums();
+    var items = albums.items;
+    console.log(items);
     city = [
         {
 
