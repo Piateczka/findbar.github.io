@@ -1,26 +1,31 @@
 function auth(){
-    let client_id = '51213679698c459cb5d247a8a3a3eca3';
-    let redirect_uri = 'http://localhost:4200/';
+    var client_id = '51213679698c459cb5d247a8a3a3eca3';
+    var redirect_uri = 'https://piateczka.github.io/findbar.github.io';
     window.location.replace(`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}`);
 };
 function getToken(){
-    var token = localStorage.getItem('token');
-    if(token!=null || token!=undefined){
-      var match = window.location.hash.match(/#access_token=(.*?)&/);
-      token =  match && match[1];
-      console.log(token);
-      localStorage.setItem('token', token);
-    }
-    if(token==null || token==undefined){
-      auth()
-    }
-    return token;
+    // var token = localStorage.getItem('token');
+    // if(token!=null || token!=undefined){
+    //   var match = window.location.hash.match(/#access_token=(.*?)&/);
+    //   token =  match && match[1];
+    //   console.log(token);
+    //   localStorage.setItem('token', token);
+    // }
+    // if(token==null || token==undefined){
+    //   auth()
+    // }
+    // return token;
+    let client_id = '51213679698c459cb5d247a8a3a3eca3';
+    let redirect_uri = 'https://piateczka.github.io/findbar.github.io';
+    window.location.replace(`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}`);
 
   };
 
 (function() {
-
-    getToken();
+    var token = localStorage.getItem('token');
+    if(token==null || token==undefined){
+        getToken();
+    }
 
     city = [
         {
