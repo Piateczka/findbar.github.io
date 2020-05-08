@@ -1,4 +1,5 @@
 var itemsList = []
+var result = []
 var ul = $("#elements")
 function getToken(){
 
@@ -45,17 +46,18 @@ function getToken(){
     getAlbums() 
  })();
  function search() {
-    var input, filter,  i, result;
+    var input, filter,  i;
     input = $("#myInput").val()
     filter = input.toUpperCase();
     if(input.length==0){
-        getAlbums()
+        getAlbums();
+        break;
     }
-    if(input.length>1){
-         result = result.filter(item=>item.name.indexOf(filter)!==-1)
+    if(input.length>1){        
+        result = result.filter(item=>item.name.toUpperCase().indexOf(filter)!==-1)
     }else
     {
-         result = itemsList.filter(item=>item.name.indexOf(filter)!==-1) 
+        result = itemsList.filter(item => item.name.toUpperCase().indexOf(filter) !== -1) 
     }
     console.log(result)
     for (i = 0; i < result.length; i++) {
