@@ -5,8 +5,8 @@ function getToken(){
     window.location.replace(`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}`);
 
   };
-  function handleResponse(){
-      return data
+  function handleResponse(data){
+    var itemsList =  data;
   }
   function getAlbums(){
     $.ajax({
@@ -28,8 +28,6 @@ function getToken(){
     if(token=="null" || token==undefined){
         getToken();
     }
-    var itemsList = handleResponse();
-    console.log(itemsList);
     city = [
         {
 
