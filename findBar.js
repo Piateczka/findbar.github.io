@@ -1,5 +1,6 @@
 var itemsList = []
 var result = []
+var pLenght;
 var ul = $("#elements")
 function getToken(){
 
@@ -49,20 +50,35 @@ function getToken(){
     var input, filter,  i;
     input = $("#myInput").val()
     filter = input.toUpperCase();
+     if (pLenght === undefined) { pLenght = 0 }
+
+    if(pLenght<input.length){
+        if(input.length>1){        
+            result = result.filter(item=>item.name.toUpperCase().indexOf(filter)!==-1)
+            pLenght = input.length
+        }
+        if(input.length===1 && input.length!==0)
+        {
+            result = itemsList.filter(item => item.name.toUpperCase().indexOf(filter) !== -1) 
+            pLenght = input.length
+        }
+    }
+    if(pLenght>input.length){
+        result = itemsList.filter(item => item.name.toUpperCase().indexOf(filter) !== -1)
+        pLenght = input.length
+    }
     if(input.length==0){
         getAlbums();
     }
-    if(input.length>1){        
-        result = result.filter(item=>item.name.toUpperCase().indexOf(filter)!==-1)
-    }
-    if(input.length===1 && input.length!==0)
-    {
-        result = itemsList.filter(item => item.name.toUpperCase().indexOf(filter) !== -1) 
-    }
-    if(result.length>=1)
-        $("li").remove()
-    for (i = 0; i < result.length; i++) {
-        $("#elements").append("<li>" + result[i].name + "</li>");
 
+    if(result.length>=1){
+        $("li").remove()
     }
+
+    if(input.length!==0){
+        for (i = 0; i < result.length; i++) {
+            $("#elements").append("<li>" + result[i].name + "</li>");        
+        }
+    }
+
 }
