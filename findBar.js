@@ -74,7 +74,10 @@ function getToken(){
     if(result.length>=1){
         $("li").remove()
     }
-
+    if(result.length === 0){
+        $("li").remove()
+        $("#elements").append( "<li>Any albums was not found</li>" );
+    }
     if(input.length!==0){
         for (i = 0; i < result.length; i++) {
             $("#elements").append("<li>" + result[i].name + "</li>");        
