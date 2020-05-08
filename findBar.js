@@ -22,7 +22,11 @@ function getToken(){
   };
 
 (function() {
-    var token = localStorage.getItem('token');
+    var match = window.location.hash.match(/#access_token=(.*?)&/);
+    token =  match && match[1];
+    console.log(token);
+    localStorage.setItem('token', token);
+    token = localStorage.getItem('token');
     if(token==null || token==undefined){
         getToken();
     }
