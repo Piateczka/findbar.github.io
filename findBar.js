@@ -51,7 +51,7 @@ function getToken(){
  function search() {
     var input, filter, ul, li, a, i, txtValue;
     input = $("#myInput");
-    filter = input.value.toUpperCase();
+    filter = input[0].value.toUpperCase();
     var result = itemsList.filter(item=>item.name.indexOf(filter)!==-1)
     console.log(result)
     li = ul.getElementsByTagName("li");
