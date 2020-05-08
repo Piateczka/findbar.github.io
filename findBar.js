@@ -54,7 +54,6 @@ function getToken(){
     filter = input[0].value.toUpperCase();
     var result = itemsList.filter(item=>item.name.indexOf(filter)!==-1)
     console.log(result)
-    li = ul.getElementsByTagName("li");
     for (i = 0; i < result.length; i++) {
         var elem = ul.append( "<li>"+itemsList[i].name+"</li>" );
 
