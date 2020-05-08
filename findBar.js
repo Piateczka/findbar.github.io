@@ -1,3 +1,4 @@
+var itemsList = []
 function getToken(){
 
     let client_id = '51213679698c459cb5d247a8a3a3eca3';
@@ -5,14 +6,24 @@ function getToken(){
     window.location.replace(`https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}`);
 
   };
-  function handleResponse(data){
-    var itemsList =  data.albums.items;
+  function handleResponseError(xhr, ajaxOptions, thrownError){
+    alert(xhr.status);
+    alert(thrownError);
+    var ul = $("#elements");
+    ul.append( "<li>WError in access to data</li>" );
+  }
 
+  function handleResponse(data){
+    itemsList =  data.albums.items;
     var ul = $("#elements");
     for(var i=0;i<itemsList.length;i++){
         var elem = ul.append( "<li>"+itemsList[i].name+"</li>" );
    }
+   if(itemsList.length<=0){
+    ul.append( "<li>Not found</li>" );
+   }
   }
+
   function getAlbums(){
     $.ajax({
         url: 'https://api.spotify.com/v1/search?type=album&query=metalica',
@@ -21,7 +32,8 @@ function getToken(){
             'Authorization' : 'Bearer ' + localStorage.getItem('token')
         },
         async: false,
-        success: handleResponse
+        success: handleResponse,
+        error: handleResponseError (xhr, ajaxOptions, thrownError)
     });
 };
 
@@ -33,12 +45,9 @@ function getToken(){
     if(token=="null" || token==undefined){
         getToken();
     }
-    getAlbums()
-
-
- 
+    getAlbums() 
  })();
- function myFunction() {
+ function search() {
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
