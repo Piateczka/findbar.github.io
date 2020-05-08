@@ -16,10 +16,6 @@ function getToken(){
 
   function handleResponse(data){
     itemsList =  data.albums.items;
-//     var ul = $("#elements");
-//     for(var i=0;i<itemsList.length;i++){
-//         var elem = ul.append( "<li>"+itemsList[i].name+"</li>" );
-//    }
    if(itemsList.length<=0){
     ul.append( "<li>Any albums was not found</li>" );
    }
@@ -61,16 +57,9 @@ function getToken(){
     {
         var result = itemsList.filter(item=>item.name.indexOf(filter)!==-1) 
     }
-    var result = itemsList.filter(item=>item.name.indexOf(filter)!==-1)
     console.log(result)
     for (i = 0; i < result.length; i++) {
         $("#elements").append("<li>" + result[i].name + "</li>");
 
-        // txtValue = itemsList[i].name
-        // if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        //     li[i].style.display = "";
-        // } else {
-        //     li[i].style.display = "none";
-        // }
     }
 }
