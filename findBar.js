@@ -28,6 +28,7 @@ function getToken(){
     if(token=="null" || token==undefined){
         getToken();
     }
+    getAlbums()
     city = [
         {
 
