@@ -58,7 +58,8 @@ function getToken(){
     {
         result = itemsList.filter(item => item.name.toUpperCase().indexOf(filter) !== -1) 
     }
-    console.log(result)
+    if(result.length>=1)
+        $("li").remove()
     for (i = 0; i < result.length; i++) {
         $("#elements").append("<li>" + result[i].name + "</li>");
 
