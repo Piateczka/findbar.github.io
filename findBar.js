@@ -54,7 +54,8 @@ function getToken(){
     }
     if(input.length>1){        
         result = result.filter(item=>item.name.toUpperCase().indexOf(filter)!==-1)
-    }else
+    }
+    if(input.length===1 && input.length!==0)
     {
         result = itemsList.filter(item => item.name.toUpperCase().indexOf(filter) !== -1) 
     }
