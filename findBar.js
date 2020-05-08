@@ -55,7 +55,7 @@ function getToken(){
     var result = itemsList.filter(item=>item.name.indexOf(filter)!==-1)
     console.log(result)
     for (i = 0; i < result.length; i++) {
-        var elem = ul.append( "<li>"+itemsList[i].name+"</li>" );
+        $("#elements").append("<li>" + result[i].name + "</li>");
 
         // txtValue = itemsList[i].name
         // if (txtValue.toUpperCase().indexOf(filter) > -1) {
